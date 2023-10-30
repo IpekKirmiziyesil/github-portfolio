@@ -1,0 +1,47 @@
+def user_adder(users):
+
+    for user in users:
+
+        name = user[0]
+        phone = user[1]
+        postal_code = user[2]
+
+        name_format = cap_name(name)
+        phone_format = format_phone(phone)
+        pc_format = format_postal(postal_code)
+        id_format = create_userid()
+
+        # print(name_format, phone_format, pc_format, id_format)
+
+        user_info = {'phone_number': phone_format, 'postal_code': pc_format, 'user_code': id_format}
+        final_user_info = {name_format: user_info}
+        print(final_user_info)
+
+
+def cap_name(name):
+
+    name_cap = name.capitalize()
+    return name_cap
+
+
+def format_phone(phone):
+    phone_str = str(phone)
+    phone_numbers_formatted = "({}) {}-{}".format(phone_str[:3], phone_str[3:6], phone_str[6:])
+    return phone_numbers_formatted
+
+
+def format_postal(postal_code):
+    pc_formatted = postal_code.upper()
+    return pc_formatted
+
+
+def create_userid():
+    import random
+    id = random.randint(10000, 99999)
+    formatted_id = "${}".format(id)
+    return formatted_id
+
+
+users = [['jeff', 7789045678, 't0p8t4'], ['juan', 7785764355, 't0p6e5'], ['ipek', 7787683365, 't0p6y4']]
+user_adder(users)
+
